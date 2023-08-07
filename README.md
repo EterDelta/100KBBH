@@ -7,7 +7,7 @@
 100KBBH is a minimalistic, yet stylized and addictive bullet hell game for Windows. As the name implies, the entire game takes up less than 100 kilobytes of space and is built entirely from scratch, without using any form of compression.
 
 ## Installation
-The whole game compiles to a single executable. You can download a build from the Itch.io page, all the instructions, requirements and details can be found there. Alternatively, you can easily build it from the source.
+The whole game compiles to a single executable. You can download a build from the [Itch.io page](https://eterdelta.itch.io/100kbbh), all the instructions, requirements and details can be found there. Alternatively, you can easily build it from the source.
 
 ## Building
 This project uses Meson as its build system. Assuming you have Meson and Ninja installed on your machine, follow the steps below to build the project:
