@@ -2,7 +2,7 @@
 
 
 ![Language](https://img.shields.io/badge/language-C++%2017-9B599A.svg?style=flat-square)
-![GitHub license](https://img.shields.io/github/license/EterDelta/100KBBH.svg?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/EterDelta/100KBBH?style=flat-square)
 
 100KBBH is a minimalistic, yet stylized and addictive bullet hell game for Windows. As the name implies, the entire game takes up less than 100 kilobytes of space and is built entirely from scratch, without using any form of compression.
 
