@@ -1,7 +1,7 @@
 #include <utility>
 #include <sstream>
 
-#include "1KBBH/model/Model.h"
+#include "100KBBH/model/Model.h"
 
 Model::Model(std::vector<GLfloat>&& verticesIn, std::vector<GLuint>&& indicesIn) :
     vertices(std::move(verticesIn)),

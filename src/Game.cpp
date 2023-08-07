@@ -1,8 +1,8 @@
-#include "1KBBH/Game.h"
-#include "1KBBH/object/Player.h"
-#include "1KBBH/texture/Textures.h"
-#include "1KBBH/shader/Shaders.h"
-#include "1KBBH/model/Models.h"
+#include "100KBBH/Game.h"
+#include "100KBBH/object/Player.h"
+#include "100KBBH/texture/Textures.h"
+#include "100KBBH/shader/Shaders.h"
+#include "100KBBH/model/Models.h"
 
 Game::Game() :
     random(std::random_device{}()),

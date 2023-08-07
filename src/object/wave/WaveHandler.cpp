@@ -1,6 +1,6 @@
 #include <algorithm>
-#include "1KBBH/object/wave/WaveHandler.h"
-#include "1KBBH/Game.h"
+#include "100KBBH/object/wave/WaveHandler.h"
+#include "100KBBH/Game.h"
 
 WaveHandler::WaveHandler() :
     waveDelay(0.5F),

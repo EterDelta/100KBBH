@@ -1,9 +1,9 @@
 #pragma once
 
 #include "glad/gl.h"
-#include "1KBBH/util/Util.h"
-#include "1KBBH/model/Model.h"
-#include "1KBBH/shader/Shader.h"
+#include "100KBBH/util/Util.h"
+#include "100KBBH/model/Model.h"
+#include "100KBBH/shader/Shader.h"
 
 class Object {
 public:

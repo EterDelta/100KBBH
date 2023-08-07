@@ -1,5 +1,5 @@
-#include "1KBBH/object/Object.h"
-#include "1KBBH/Game.h"
+#include "100KBBH/object/Object.h"
+#include "100KBBH/Game.h"
 
 Object::Object() :
     position(0.0F, 0.0F, 0.0F),

@@ -1,4 +1,4 @@
-#include "1KBBH/texture/Texture.h"
+#include "100KBBH/texture/Texture.h"
 
 Texture::Texture(std::vector<unsigned char>&& pixelData, int width, int height) :
     pixelData(std::move(pixelData)),

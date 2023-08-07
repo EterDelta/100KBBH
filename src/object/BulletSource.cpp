@@ -1,6 +1,6 @@
-#include "1KBBH/object/BulletSource.h"
-#include "1KBBH/Game.h"
-#include "1KBBH/model/Models.h"
+#include "100KBBH/object/BulletSource.h"
+#include "100KBBH/Game.h"
+#include "100KBBH/model/Models.h"
 
 const std::vector<BulletSource::BulletFunction> BulletSource::unweightedFunctions {
     // Target burst

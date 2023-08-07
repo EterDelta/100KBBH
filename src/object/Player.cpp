@@ -1,6 +1,6 @@
-#include "1KBBH/object/Player.h"
-#include "1KBBH/Game.h"
-#include "1KBBH/model/Models.h"
+#include "100KBBH/object/Player.h"
+#include "100KBBH/Game.h"
+#include "100KBBH/model/Models.h"
 
 Player::Player() : Object() {
     position.y = -0.5;

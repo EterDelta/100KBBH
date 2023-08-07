@@ -1,7 +1,7 @@
 #include <glad/gl.h>
 #include <windows.h>
 #include <chrono>
-#include "1KBBH/Game.h"
+#include "100KBBH/Game.h"
 
 LRESULT CALLBACK windowProc(HWND windowHandle, UINT msg, WPARAM wParam, LPARAM lParam) {
     if (msg == WM_DESTROY) {

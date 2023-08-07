@@ -4,12 +4,12 @@
 #include <random>
 #include <map>
 #include <forward_list>
-#include "1KBBH/util/Util.h"
-#include "1KBBH/texture/Texture.h"
-#include "1KBBH/shader/Shader.h"
-#include "1KBBH/model/Model.h"
-#include "1KBBH/object/Object.h"
-#include "1KBBH/object/wave/WaveHandler.h"
+#include "100KBBH/util/Util.h"
+#include "100KBBH/texture/Texture.h"
+#include "100KBBH/shader/Shader.h"
+#include "100KBBH/model/Model.h"
+#include "100KBBH/object/Object.h"
+#include "100KBBH/object/wave/WaveHandler.h"
 
 class Game {
 private:
