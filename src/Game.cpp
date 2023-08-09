@@ -79,12 +79,12 @@ void Game::draw() {
     }
 
     glActiveTexture(GL_TEXTURE0);
-
     glBindTexture(GL_TEXTURE_2D, Textures::FONT_ATLAS.getTextureID());
-    matrixStack.push();
-    matrixStack.top().translate(0.0F, 0.0F, -1.0F);
+
     GLuint foregroundProgram = Shaders::FOREGROUND.getProgram();
     glUseProgram(foregroundProgram);
+    matrixStack.push();
+    matrixStack.top().translate(0.0F, 0.0F, -1.0F);
     glUniformMatrix4fv(glGetUniformLocation(foregroundProgram, "transform"), 1, GL_FALSE, matrixStack.top().elements);
     glUniform1i(glGetUniformLocation(foregroundProgram, "stopped"), stop);
     glUniform1i(glGetUniformLocation(foregroundProgram, "booted"), booted);
