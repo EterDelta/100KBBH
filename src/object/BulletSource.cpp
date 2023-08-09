@@ -25,21 +25,21 @@ const std::vector<BulletSource::BulletFunction> BulletSource::weightedFunctions 
     // Circular burst
     [](const BulletSource& source, float alpha) {
         float angle = alpha * 2 * MathUtil::PI;
-        Vector2 direction = Vector2(cos(angle), sin(angle)).normalized();
+        Vector2 direction = Vector2(MathUtil::fastCos(angle), MathUtil::fastSin(angle)).normalized();
         return std::make_unique<Bullet>(direction * source.bulletSpeed);
     },
     // Helix burst
     [](const BulletSource& source, float alpha) {
         float angle = alpha * 2 * MathUtil::PI;
-        Vector2 direction = Vector2(cos(angle), sin(angle)).normalized();
-        float speed = source.bulletSpeed * (1 + 0.5f * sin(4 * MathUtil::PI * alpha));
+        Vector2 direction = Vector2(MathUtil::fastCos(angle), MathUtil::fastSin(angle)).normalized();
+        float speed = source.bulletSpeed * (1 + 0.5f * MathUtil::fastSin(4 * MathUtil::PI * alpha));
         return std::make_unique<Bullet>(direction * speed);
     },
     // Star burst
     [](const BulletSource& source, float alpha) {
         float angle = alpha * 2 * MathUtil::PI;
-        Vector2 direction = Vector2(cos(angle), sin(angle)).normalized();
-        float speed = source.bulletSpeed * (1 + 0.5f * sin(10 * MathUtil::PI * alpha));  // Oscillating speed
+        Vector2 direction = Vector2(MathUtil::fastCos(angle), MathUtil::fastSin(angle)).normalized();
+        float speed = source.bulletSpeed * (1 + 0.5f * MathUtil::fastSin(10 * MathUtil::PI * alpha));
         return std::make_unique<Bullet>(direction * speed);
     }
 };
