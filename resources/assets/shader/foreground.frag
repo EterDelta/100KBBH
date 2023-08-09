@@ -6,7 +6,7 @@ vec2 glyphSize = vec2(16, 16);
 vec2 atlasSize = vec2(256, 64);
 vec2 resolution = vec2(512, 512);
 
-int creditText[18] = int[](21, 53, 63, 52, 63, 52, -1, 11, -1, 30, 19, 4, 17, 29, 4, 11, 19, 0);
+int creditText[18] = int[](21, 53, 63, 52, 63, 53, -1, 11, -1, 30, 19, 4, 17, 29, 4, 11, 19, 0);
 int titleText[7] = int[](53, 52, 52, 36, 27, 27, 33);
 int scoreText[6] = int[](44, 2, 14, 17, 4, 62);
 
