@@ -37,7 +37,7 @@ void WaveHandler::spawnNewWave() {
     int instant = std::uniform_int_distribution<>(0, 1)(game.random);
     if (instant) {
         speed = std::uniform_real_distribution<float>(1.0F, 2.0F)(game.random);
-        count = std::uniform_int_distribution<>(1, 32)(game.random);
+        count = std::uniform_int_distribution<>(2, 32)(game.random);
         bursts = std::uniform_int_distribution<>(1, 5)(game.random);
     } else {
         speed = std::uniform_real_distribution<float>(1.0F, 3.0F)(game.random);
