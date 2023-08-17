@@ -36,6 +36,8 @@ void Player::update(float deltaTime) {
         velocity.x = 0.0F;
     }
 
+    velocity = velocity.normalized() * 0.8F;
+
     Object::update(deltaTime);
 
     if (position.x - scale.x < -1.0F) {
