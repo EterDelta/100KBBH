@@ -21,22 +21,22 @@ void Player::draw(MatrixStack& stack, GLuint program) const {
 
 void Player::update(float deltaTime) {
     Game& game = Game::getInstance();
+    float speed = 0.8F;
+
+    velocity = Vector2(0, 0);
+
     if (game.inputs[VK_W]) {
-        velocity.y = 0.8F;
+        velocity.y += speed;
     } else if (game.inputs[VK_S]) {
-        velocity.y = -0.8F;
-    } else {
-        velocity.y = 0.0F;
+        velocity.y -= speed;
     }
     if (game.inputs[VK_D]) {
-        velocity.x = 0.8F;
+        velocity.x += speed;
     } else if (game.inputs[VK_A]) {
-        velocity.x = -0.8F;
-    } else {
-        velocity.x = 0.0F;
+        velocity.x -= speed;
     }
 
-    velocity = velocity.normalized() * 0.8F;
+    velocity = velocity.normalized() * speed;
 
     Object::update(deltaTime);
 
