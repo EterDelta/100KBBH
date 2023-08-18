@@ -1,0 +1,35 @@
+name: CI
+on:
+  push:
+    branches: [master]
+    paths-ignore: ["**.md"]
+  pull_request:
+    paths-ignore: ["**.md"]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        platform: [Win32, x64, ARM64]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -A ${{matrix.platform}}
+          cmake --build . --config Release -- /maxcpucount
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: 100KBBH_${{matrix.platform}}
+          path: build/Release/100KBBH.exe

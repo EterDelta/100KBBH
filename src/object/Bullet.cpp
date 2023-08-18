@@ -1,5 +1,6 @@
 #include "100KBBH/object/Bullet.h"
 #include "100KBBH/model/Models.h"
+#include <algorithm>
 
 Bullet::Bullet(Vector2 bulletVelocity) : Object() {
     position.z = -0.5;
