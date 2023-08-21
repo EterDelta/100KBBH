@@ -43,17 +43,15 @@ void main() {
     if (stopped) {
         color.w = 0.5;
         if (booted) {
-            vec2 textOffset = vec2(0.0);
+            if (uv.y > 0.0 && uv.y < 0.335) {
+                color = vec4(1.0, 0.32, 0.64, 1.0);
+            }
             float titleScale = 4.0;
             float titleWidth = float(titleText.length()) * GLYPH_OFFSET;
 
             vec2 tiledUV = uv * glyphSize / titleScale;
 
-            textOffset.x = -(titleWidth / 2.0);
-
-            if (uv.y > 0.0 && uv.y < 0.335) {
-                color = vec4(1.0, 0.32, 0.64, 1.0);
-            }
+            vec2 textOffset = vec2(-(titleWidth / 2.0), 0.0);
             for (int i = 0; i < titleText.length(); i++) {
                 int index = titleText[i];
                 color += glyph(tiledUV - textOffset, index);
@@ -61,38 +59,32 @@ void main() {
             }
         }
     }
+
+    uv = gl_FragCoord.xy / resolution.y;
+
     if (!booted) {
-        uv = gl_FragCoord.xy / resolution.y;
-        vec2 textOffset = vec2(0.0);
         float scoreScale = 1.5;
         float scoreWidth = float(scoreText.length()) * GLYPH_OFFSET;
 
         vec2 tiledUV = uv * glyphSize / scoreScale;
 
-        textOffset.x += 0.32;
-
+        vec2 textOffset = vec2(0.32, 0.0);
         for (int i = 0; i < scoreText.length(); i++) {
             int index = scoreText[i];
             color += glyph(tiledUV - textOffset, index);
             textOffset.x += GLYPH_OFFSET;
         }
 
-        textOffset.x = 0;
-        textOffset.x += scoreWidth + 0.32;
-
+        textOffset.x = scoreWidth + 0.32;
         for (int i = 0; i < score.length(); i++) {
             int index = score[i];
             color += glyph(tiledUV - textOffset, index);
             textOffset.x += GLYPH_OFFSET;
         }
     } else {
-        uv = gl_FragCoord.xy / resolution.y;
-        vec2 textOffset = vec2(0.0);
+        vec2 tiledUV = uv * glyphSize;
 
-        vec2 tiledUV = uv * glyphSize / 1.0;
-
-        textOffset.x += 0.32;
-
+        vec2 textOffset = vec2(0.32, 0.0);
         for (int i = 0; i < creditText.length(); i++) {
             int index = creditText[i];
             color.xyz += glyph(tiledUV - textOffset, index);
