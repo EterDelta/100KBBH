@@ -93,9 +93,9 @@ void BulletSource::update(float deltaTime) {
         if (!target.expired()) {
             bulletTime += deltaTime;
 
-            while (bulletTime >= bulletDelay && !despawn) {
-                Game& game = Game::getInstance();
+            Game& game = Game::getInstance();
 
+            while (bulletTime >= bulletDelay && !despawn) {
                 if (bursts > 0) {
                     if (burstAlpha < 1.0F) {
                         burstAlpha += bulletValue;
