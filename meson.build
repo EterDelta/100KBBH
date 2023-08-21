@@ -1,5 +1,5 @@
 project('100KBBH', 'c', 'cpp',
-    version : '1.0.1',
+    version : '1.0.2',
     default_options : ['c_std=c11', 'cpp_std=c++17'])
 
 resources = files(
