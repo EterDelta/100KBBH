@@ -2,7 +2,8 @@
 #include "100KBBH/Game.h"
 #include "100KBBH/model/Models.h"
 
-Player::Player() : Object() {
+Player::Player() : Object(),
+    speed(0.8F) {
     position.y = -0.5;
     position.z = -0.5;
     scale = Vector3(0.08F, 0.08F, 0.08F);
@@ -21,19 +22,20 @@ void Player::draw(MatrixStack& stack, GLuint program) const {
 
 void Player::update(float deltaTime) {
     Game& game = Game::getInstance();
-    float speed = 0.8F;
 
-    velocity = Vector2(0, 0);
+    velocity = Vector2(0.0F, 0.0F);
 
     if (game.inputs[VK_W]) {
-        velocity.y += speed;
-    } else if (game.inputs[VK_S]) {
-        velocity.y -= speed;
+        velocity.y += 1.0F;
+    }
+    if (game.inputs[VK_S]) {
+        velocity.y -= 1.0F;
     }
     if (game.inputs[VK_D]) {
-        velocity.x += speed;
-    } else if (game.inputs[VK_A]) {
-        velocity.x -= speed;
+        velocity.x += 1.0F;
+    }
+    if (game.inputs[VK_A]) {
+        velocity.x -= 1.0F;
     }
 
     velocity = velocity.normalized() * speed;

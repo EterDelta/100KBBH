@@ -8,6 +8,7 @@ protected:
     static constexpr int VK_A = 0x41;
     static constexpr int VK_S = 0x53;
     static constexpr int VK_D = 0x44;
+    const float speed;
 
 public:
     Player();
