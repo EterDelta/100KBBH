@@ -10,12 +10,12 @@
 The whole game compiles to a single executable. You can download a build from the [Itch.io page](https://eterdelta.itch.io/100kbbh), all the instructions, requirements and details can be found there. Alternatively, you can easily build it from the source.
 
 ## Building
-This project uses Meson as its build system. Assuming you have Meson and Ninja installed on your machine, follow the steps below to build the project:
+This project uses CMake as its build system. Assuming you have CMake and a compatible compiler (like Visual Studio) installed on your Windows machine, follow the steps below to build the project:
 
 1. Clone the repository and navigate into the project's root directory.
-2. Configure the project in a folder with Meson by running `meson setup --buildtype=release build-release` or `meson setup --buildtype=debugoptimized build-debug`.
-3. Navigate to the configured folder and compile normally with `meson compile`.
+2. Configure the project using CMake by running `cmake -S . -B build`.
+3. Compile the project with `cmake --build build --config Release` or `cmake --build build --config Debug`.
 
-Remember to edit the meson.build and `--reconfigure` the folders if you add or remove resources, as this project depends on a custom command for packing them.
+Remember to edit the CMakeLists.txt and re-run CMake if you add or remove resources.
 
-For more detailed instructions and help, please refer to the [Meson documentation](https://mesonbuild.com/).
+For more detailed instructions and help, please refer to the [CMake documentation](https://cmake.org/documentation/).
