@@ -1,3 +1,7 @@
+# vscode
+.vscode
+.clangd
+
 # idea
 .idea
 
