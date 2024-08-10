@@ -11,7 +11,6 @@ public:
     static constexpr float PI = 3.14159265358979323846F;
 
     static float fastSin(float angle);
-
     static float fastCos(float angle);
 
     static float lerp(float start, float end, float alpha);
@@ -34,6 +33,7 @@ public:
 
     Vector2 operator*(float scalar) const;
 
+    float lengthSqr() const;
     float length() const;
 
     Vector2 normalized() const;
@@ -51,6 +51,7 @@ public:
 
     Vector3 operator-(const Vector3& other) const;
 
+    float lengthSqr() const;
     float length() const;
 
     Vector3 normalized() const;
@@ -62,7 +63,8 @@ public:
 
     Matrix4();
 
-    void multiply(Matrix4& other, bool backwards);
+    void multiply(Matrix4& other);
+    void multiplyInv(Matrix4& other);
 
     void translate(float x, float y, float z);
 

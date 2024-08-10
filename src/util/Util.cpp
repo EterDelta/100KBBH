@@ -44,8 +44,12 @@ Vector2 Vector2::operator*(float scalar) const {
     return Vector2(x * scalar, y * scalar);
 }
 
+float Vector2::lengthSqr() const {
+    return x * x + y * y;
+}
+
 float Vector2::length() const {
-    return std::sqrt(x * x + y * y);;
+    return std::sqrt(x * x + y * y);
 }
 
 Vector2 Vector2::normalized() const {
@@ -62,6 +66,10 @@ Vector3 Vector3::operator+(const Vector3& other) const {
 
 Vector3 Vector3::operator-(const Vector3& other) const {
     return Vector3(x - other.x, y - other.y, z - other.z);
+}
+
+float Vector3::lengthSqr() const {
+    return x * x + y * y + z * z;
 }
 
 float Vector3::length() const {
@@ -83,20 +91,34 @@ Matrix4::Matrix4() {
     elements[15] = 1.0F;
 }
 
-void Matrix4::multiply(Matrix4& other, bool backwards) {
+void Matrix4::multiply(Matrix4& other) {
     Matrix4 result;
     for (int y = 0; y < 4; y++) {
         for (int x = 0; x < 4; x++) {
             float sum = 0.0F;
             for (int e = 0; e < 4; e++) {
-                sum += backwards ?
-                       other.elements[e + x * 4] * elements[y + e * 4] :
-                       elements[e + x * 4] * other.elements[y + e * 4];
+                sum += elements[e + x * 4] * other.elements[y + e * 4];
             }
             result.elements[y + x * 4] = sum;
         }
     }
 
+    for (int i = 0; i < 16; i++) {
+        elements[i] = result.elements[i];
+    }
+}
+
+void Matrix4::multiplyInv(Matrix4& other) {
+    Matrix4 result;
+    for (int y = 0; y < 4; y++) {
+        for (int x = 0; x < 4; x++) {
+            float sum = 0.0F;
+            for (int e = 0; e < 4; e++) {
+                sum += other.elements[e + x * 4] * elements[y + e * 4];
+            }
+            result.elements[y + x * 4] = sum;
+        }
+    }
     for (int i = 0; i < 16; i++) {
         elements[i] = result.elements[i];
     }
@@ -108,7 +130,7 @@ void Matrix4::translate(float x, float y, float z) {
     translation.elements[13] = y;
     translation.elements[14] = z;
 
-    multiply(translation, false);
+    multiply(translation);
 }
 
 void Matrix4::rotate(float pitch, float yaw, float roll) {
@@ -130,7 +152,7 @@ void Matrix4::rotate(float pitch, float yaw, float roll) {
     rotation.elements[9] = rollSin * yawSin + yawCos * pitchSin * rollCos;
     rotation.elements[10] = yawCos * pitchCos;
 
-    multiply(rotation, true);
+    multiplyInv(rotation);
 }
 
 void Matrix4::scale(float x, float y, float z) {
@@ -139,7 +161,7 @@ void Matrix4::scale(float x, float y, float z) {
     scale.elements[5] = y;
     scale.elements[10] = z;
 
-    multiply(scale, true);
+    multiplyInv(scale);
 }
 
 MatrixStack::MatrixStack() {
