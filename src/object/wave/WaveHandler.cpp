@@ -21,9 +21,10 @@ void WaveHandler::update(float deltaTime) {
 }
 
 void WaveHandler::computeScore() {
-    score = MathUtil::digitize(wave);
-    score.resize(3, 0);
-    std::reverse(score.begin(), score.end());
+    scoreLiteral = MathUtil::digitize(wave);
+    scoreLiteral.resize(3, 0);
+    std::reverse(scoreLiteral.begin(), scoreLiteral.end());
+    std::for_each(scoreLiteral.begin(), scoreLiteral.end(), [](int& element) { element += 52; });
 }
 
 void WaveHandler::spawnNewWave() {
@@ -54,10 +55,10 @@ void WaveHandler::spawnNewWave() {
     newSource->position.x = posDist(game.random);
     newSource->position.y = posDist(game.random);
 
-    source = newSource;
+    currentSource = newSource;
     game.newObjects.push_back(std::move(newSource));
 }
 
 bool WaveHandler::canSpawnNewWave() const {
-    return source.expired() || source.lock()->despawn;
+    return currentSource.expired() || currentSource.lock()->despawn;
 }

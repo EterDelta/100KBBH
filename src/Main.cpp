@@ -12,17 +12,14 @@ LRESULT CALLBACK windowProc(HWND windowHandle, UINT msg, WPARAM wParam, LPARAM l
 
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE prevInstance, PTSTR cmdLine, int cmdShow) {
     WNDCLASSEX windowClass;
-
-    windowClass.cbSize = sizeof(WNDCLASSEX);
+    ZeroMemory(&windowClass, sizeof(windowClass));
+    windowClass.cbSize = sizeof(windowClass);
     windowClass.style = CS_OWNDC;
     windowClass.lpfnWndProc = windowProc;
-    windowClass.cbClsExtra = 0;
-    windowClass.cbWndExtra = 0;
     windowClass.hInstance = instance;
     windowClass.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
     windowClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
     windowClass.hbrBackground = (HBRUSH) GetStockObject(BLACK_BRUSH);
-    windowClass.lpszMenuName = nullptr;
     windowClass.lpszClassName = "100KBBH";
     windowClass.hIconSm = LoadIcon(nullptr, IDI_APPLICATION);
 

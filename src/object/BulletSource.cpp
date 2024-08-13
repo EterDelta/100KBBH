@@ -48,10 +48,10 @@ BulletSource::BulletSource(const BulletSource::BulletFunction& function, const s
     spawnFactor(0.0F),
     despawnFactor(0.0F),
     bulletFunction(function),
-    target(target),
     bulletSpeed(speed),
     bulletDelay(delay),
     bulletValue(1.0F / count),
+    target(target),
     bulletTime(0.0F),
     burstAlpha(0.0F),
     bursts(bursts),
@@ -71,8 +71,8 @@ void BulletSource::draw(MatrixStack& stack, GLuint program) const {
     float easedAnimFactor;
     float animY;
     if (!active) {
-        animFactor = std::clamp(spawnFactor, 0.0F, 1.0F);
-        easedAnimFactor = (--animFactor) * animFactor * animFactor + 1;
+        animFactor = std::clamp(spawnFactor, 0.0F, 1.0F) - 1.0F;
+        easedAnimFactor = animFactor * animFactor * animFactor + 1.0F;
         animY = MathUtil::lerp(1.5F, position.y, easedAnimFactor);
         stack.top().translate(0.0F, animY - position.y, 0.0F);
     } else if (despawn) {

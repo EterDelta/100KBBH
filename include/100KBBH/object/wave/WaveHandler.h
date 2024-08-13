@@ -4,8 +4,10 @@
 
 class WaveHandler {
 public:
-    std::weak_ptr<BulletSource> source;
-    std::vector<int> score;
+    std::weak_ptr<BulletSource> currentSource;
+
+    std::vector<int> scoreLiteral;
+
     float waveDelay;
     int wave;
 

@@ -11,9 +11,12 @@ public:
     Vector3 rotation;
     Vector3 scale;
     Vector3 color;
+
     Vector2 velocity;
+
     bool checksCollision;
     bool colliding;
+
     bool alive;
     float aliveTime;
 

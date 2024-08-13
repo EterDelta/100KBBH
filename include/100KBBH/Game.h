@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <random>
-#include <map>
+#include <unordered_map>
 #include <forward_list>
 #include "100KBBH/util/Util.h"
 #include "100KBBH/texture/Texture.h"
@@ -13,7 +13,10 @@
 
 class Game {
 private:
+    static constexpr int VK_SPC = 0x20;
+
     WaveHandler waveHandler;
+
     MatrixStack matrixStack;
     GLuint vao;
 
@@ -24,9 +27,13 @@ private:
 public:
     std::vector<std::shared_ptr<Object>> newObjects;
     std::vector<std::shared_ptr<Object>> gameObjects;
+
     std::default_random_engine random;
-    std::map<int, bool> inputs;
+
+    std::unordered_map<int, bool> inputs;
+
     float gameTime;
+
     bool booted;
     bool stop;
 

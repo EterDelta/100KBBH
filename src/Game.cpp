@@ -58,7 +58,6 @@ void Game::reset() {
 }
 
 void Game::draw() {
-    glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     GLuint backgroundProgram = Shaders::BACKGROUND.getProgram();
@@ -87,10 +86,8 @@ void Game::draw() {
     matrixStack.top().translate(0.0F, 0.0F, -1.0F);
     glUniformMatrix4fv(glGetUniformLocation(foregroundProgram, "transform"), 1, GL_FALSE, matrixStack.top().elements);
     glUniform1i(glGetUniformLocation(foregroundProgram, "stopped"), stop);
-    glUniform1i(glGetUniformLocation(foregroundProgram, "booted"), booted);
-    std::vector<int> score = waveHandler.score;
-    std::for_each(score.begin(), score.end(), [](int& element) { element += 52; });
-    glUniform1iv(glGetUniformLocation(foregroundProgram, "score"), score.size(), &score[0]);
+    glUniform1i(glGetUniformLocation(foregroundProgram, "booted"), booted);    
+    glUniform1iv(glGetUniformLocation(foregroundProgram, "score"), waveHandler.scoreLiteral.size(), waveHandler.scoreLiteral.data());
     glUniform1i(glGetUniformLocation(foregroundProgram, "atlas"), 0);
     Models::QUAD.draw();
     matrixStack.pop();
@@ -111,7 +108,7 @@ void Game::update(float deltaTime) {
         }), gameObjects.end());
         waveHandler.update(deltaTime);
     } else {
-        if (inputs[0x20]) {
+        if (inputs[VK_SPC]) {
             reset();
             booted = false;
             stop = false;
